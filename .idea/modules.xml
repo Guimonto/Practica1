@@ -2,10 +2,12 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Practica1.iml" filepath="$PROJECT_DIR$/Practica1.iml" />
       <module fileurl="file://C:\Users\efran\AndroidStudioProjects\Practica1\Practica1.iml" filepath="C:\Users\efran\AndroidStudioProjects\Practica1\Practica1.iml" />
       <module fileurl="file://C:\Users\efran\Documents\GitHub\Practica1\Whowantstobeamillionaire.iml" filepath="C:\Users\efran\Documents\GitHub\Practica1\Whowantstobeamillionaire.iml" />
-      <module fileurl="file://$USER_HOME$/Documents/GitHub/Practica1/app/app.iml" filepath="$USER_HOME$/Documents/GitHub/Practica1/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://C:\Users\efran\AndroidStudioProjects\Practica1\app\app.iml" filepath="C:\Users\efran\AndroidStudioProjects\Practica1\app\app.iml" />
+      <module fileurl="file://C:\Users\Guill\Documents\GitHub\Practica1\app\app.iml" filepath="C:\Users\Guill\Documents\GitHub\Practica1\app\app.iml" />
     </modules>
   </component>
 </project>
