@@ -4,8 +4,14 @@
     <string name="tvscores">Scores</string>
     <string name="tvsettings">Settings</string>
     <string name="about">Who wants to be a millionaire\n\n Guillermo Montilla \n\n guimonto@inf.upv.es\n\n 2018</string>
-    <string name="name">Name</string>
+    <string name="name">Name: </string>
     <string name="help_settings">How many times can you ask for help?</string>
     <string name="enter_name">Enter your name</string>
     <string name="enter_friends_name">Enter your friends name</string>
+    <string name="add_friend">Add friend: </string>
+    <string name="label_information">Information</string>
+    <string name="zero_help">0</string>
+    <string name="one_help">1</string>
+    <string name="two_help">2</string>
+    <string name="three_help">3</string>
 </resources>
