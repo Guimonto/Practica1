@@ -62,7 +62,7 @@ public class ScoreActivity extends AppCompatActivity {
                         ScoreListUser.clear();
 
                     }
-                })
+                });
         }
     }
 

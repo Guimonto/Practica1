@@ -2,6 +2,8 @@ package sdm.pract1.whowantstobeamillionaire;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import sdm.pract1.whowantstobeamillionaire.pojo.Question;
+
 import android.widget.TextView;
 
 import java.util.ArrayList;
