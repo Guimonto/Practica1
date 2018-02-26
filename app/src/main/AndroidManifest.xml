@@ -25,7 +25,7 @@
             android:windowSoftInputMode="stateAlwaysHidden"/>
         <activity
             android:name=".GameActivity"
-            android:label="@string/app_name"/>
+            android:label="@string/tvplay"/>
         <activity
             android:name=".ScoreActivity"
             android:label="@string/tvscores">

@@ -1,20 +1,55 @@
 package sdm.pract1.whowantstobeamillionaire;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import sdm.pract1.whowantstobeamillionaire.pojo.Question;
 
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
-
+//En este espacio no se puede anyadir nada, porque hace que se cierre la aplicacion
+/*
+    Button b1 = (Button) findViewById(R.id.option1);
+    Button b2 = (Button) findViewById(R.id.option2);
+    Button b3 = (Button) findViewById(R.id.option3);
+    Button b4 = (Button) findViewById(R.id.option4);
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.game_menu, menu);
+
+        menu.findItem(R.id.menu_phone).setVisible(true);
+        menu.findItem(R.id.menu_fifty).setVisible(true);
+        menu.findItem(R.id.menu_people).setVisible(true);
+
+        return true;
+    }
+
+   @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId()){
+
+            case R.id.menu_fifty:
+                //Intent about = new Intent(this, AboutActivity.class);
+                //startActivity(about);
+                Button b1 = (Button) findViewById(R.id.option1);
+                b1.setEnabled(false);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public List<Question> generateQuestionList() {

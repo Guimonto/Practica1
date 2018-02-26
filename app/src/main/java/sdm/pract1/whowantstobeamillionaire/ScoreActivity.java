@@ -17,7 +17,8 @@ import java.util.List;
 import sdm.pract1.whowantstobeamillionaire.adapter.ScoreAdapter;
 
 public class ScoreActivity extends AppCompatActivity {
-
+//En este espacio no se puede anyadir nada, porque hace que se cierre la aplicacion
+   /*
     List<HighScore> ScoreListUser;
     List<HighScore> ScoreListFriends;
 
@@ -26,17 +27,20 @@ public class ScoreActivity extends AppCompatActivity {
     ScoreAdapter adapter;
 
     boolean clearUserScore;
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
+        /*
         scoreListViewUser = (ListView) findViewById(R.id.user_score);
 
         adapter = new ScoreAdapter(this, ScoreListUser, R.layout.score_list_row);
 
         scoreListViewUser.setAdapter(adapter);
+        */
 
         TabHost host = (TabHost) findViewById(R.id.my_tab_host);
         host.setup();
@@ -49,8 +53,8 @@ public class ScoreActivity extends AppCompatActivity {
         spec.setContent(R.id.tab2);
         host.addTab(spec);
 
-
-        ScoreListUser = new ArrayList<>();
+/*
+       ScoreListUser = new ArrayList<>();
         ScoreListUser.addAll(getMockUserScore());
 
 
@@ -59,18 +63,19 @@ public class ScoreActivity extends AppCompatActivity {
 
         if(ScoreListUser.size() > 0)
             clearUserScore = true;
-
+*/
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.score_menu, menu);
 
-        menu.findItem(R.id.delete_score).setVisible(clearUserScore);
+        //menu.findItem(R.id.delete_score).setVisible(clearUserScore);
 
         return true;
     }
 
+    /*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -102,6 +107,7 @@ public class ScoreActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+    */
 
     private List<HighScore> getMockUserScore(){
         List<HighScore> result = new ArrayList<>();
