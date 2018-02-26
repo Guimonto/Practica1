@@ -41,16 +41,12 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
 
                         <ListView
                             android:id="@+id/user_score"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
-                    </LinearLayout>
+
 
                 </LinearLayout>
 
@@ -60,16 +56,12 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+
 
                         <ListView
                             android:id="@+id/friends_score"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent" />
-                    </LinearLayout>
 
                 </LinearLayout>
 
