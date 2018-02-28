@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewDebug;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -42,6 +43,8 @@ public class ScoreActivity extends AppCompatActivity {
         adapter = new ScoreAdapter(this, ScoreListUser, R.layout.score_list_row);
 
         scoreListViewUser.setAdapter(adapter);
+
+
 
         ScoreListFriends = new ArrayList<>();
         ScoreListFriends.addAll(getMockUserScore());

@@ -1,6 +1,9 @@
 package sdm.pract1.whowantstobeamillionaire;
 
 import android.content.Intent;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -97,6 +100,14 @@ public class GameActivity extends AppCompatActivity {
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            game();
+                        }
+                    },3000);
                 }
                 else{
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -111,6 +122,14 @@ public class GameActivity extends AppCompatActivity {
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+
+                    Handler handler2 = new Handler();
+                    handler2.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            game();
+                        }
+                    },3000);
                 }
                 else{
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -126,6 +145,14 @@ public class GameActivity extends AppCompatActivity {
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+
+                    Handler handler3 = new Handler();
+                    handler3.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            game();
+                        }
+                    },3000);
                 }
                 else {
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -141,6 +168,14 @@ public class GameActivity extends AppCompatActivity {
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+
+                    Handler handler4 = new Handler();
+                    handler4.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            game();
+                        }
+                    },3000);
                 }
                 else {
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
