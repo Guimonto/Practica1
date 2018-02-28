@@ -1,6 +1,7 @@
 package sdm.pract1.whowantstobeamillionaire;
 
 import android.content.Intent;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import sdm.pract1.whowantstobeamillionaire.pojo.Question;
@@ -14,18 +15,43 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
-//En este espacio no se puede anyadir nada, porque hace que se cierre la aplicacion
-/*
-    Button b1 = (Button) findViewById(R.id.option1);
-    Button b2 = (Button) findViewById(R.id.option2);
-    Button b3 = (Button) findViewById(R.id.option3);
-    Button b4 = (Button) findViewById(R.id.option4);
-*/
+//En este espacio solo se pueden crear variables pero NO inicializarlas, porque hace que se cierre la aplicacion
+
+    private Button b1;
+    private Button b2;
+    private Button b3;
+    private Button b4;
+    private List<Question> questions;
+    private TextView play_for;
+    private TextView number_question;
+    private TextView current_question;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        /*Inicializamos aqui las variables*/
+        b1 = (Button) findViewById(R.id.option1);
+        b2 = (Button) findViewById(R.id.option2);
+        b3 = (Button) findViewById(R.id.option3);
+        b4 = (Button) findViewById(R.id.option4);
+        play_for = (TextView) findViewById(R.id.PF_MN);
+        number_question = (TextView) findViewById(R.id.QT_NB);
+        current_question = (TextView) findViewById(R.id.question);
+        /*Obtenemos la lista de preguntas*/
+        questions = generateQuestionList();
 
+        game();
+    }
+
+    private void game(){
+        play_for.setText("100$");
+        number_question.setText(questions.get(0).getNumber());
+        current_question.setText(questions.get(0).getText());
+        b1.setText(questions.get(0).getAnswer1());
+        b2.setText(questions.get(0).getAnswer2());
+        b3.setText(questions.get(0).getAnswer3());
+        b4.setText(questions.get(0).getAnswer4());
     }
 
     @Override
@@ -46,8 +72,22 @@ public class GameActivity extends AppCompatActivity {
             case R.id.menu_fifty:
                 //Intent about = new Intent(this, AboutActivity.class);
                 //startActivity(about);
-                Button b1 = (Button) findViewById(R.id.option1);
+
                 b1.setEnabled(false);
+                break;
+
+            case R.id.menu_people:
+                b2.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                break;
+
+            case R.id.menu_phone:
+                b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                break;
+
+            case R.id.menu_cancel:
+                closeContextMenu();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
