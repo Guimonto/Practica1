@@ -67,20 +67,58 @@ public class GameActivity extends AppCompatActivity {
         b4.setText(questions.get(a).getAnswer4());
     }
 
-    public void clickButton(View v){
+    public void clickButtons(View v){
         correct = Integer.parseInt(questions.get(ind).getRight());
         switch (v.getId()){
             case R.id.option1:
-                
+                if (correct == 1){
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+                    b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                }
+                else{
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b2.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
+                }
                 break;
-
             case R.id.option2:
+                if (correct == 2) {
+                    b2.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                }
+                else{
+                    b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b1.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
+                }
                 break;
 
             case R.id.option3:
+                if (correct == 3) {
+                    b3.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                }
+                else {
+                    b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b1.setEnabled(false);b2.setEnabled(false);b4.setEnabled(false);
+                }
                 break;
 
             case R.id.option4:
+                if (correct == 4) {
+                    b4.setBackgroundColor(getResources().getColor(R.color.colorGreen));
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                }
+                else {
+                    b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    b1.setEnabled(false);b2.setEnabled(false);b3.setEnabled(false);
+                }
                 break;
         }
     }
