@@ -26,9 +26,10 @@ public class GameActivity extends AppCompatActivity {
     private TextView play_for;
     private TextView number_question;
     private TextView current_question;
-    private int ind;
-    private int points;
-    private int correct;
+    private int ind; /*Indice*/
+    private int points; /*Puntos*/
+    private int correct; /*Respuesta correcta*/
+    private long temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,12 @@ public class GameActivity extends AppCompatActivity {
         play_for = (TextView) findViewById(R.id.PF_MN);
         number_question = (TextView) findViewById(R.id.QT_NB);
         current_question = (TextView) findViewById(R.id.question);
-        points = 0; correct = 0;
+        points = 0; correct = 0; temp = 1000;
+
+        b1.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b2.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b3.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b4.setBackgroundColor(getResources().getColor(R.color.colorGrey));
 
         /*Obtenemos la lista de preguntas*/
         questions = generateQuestionList();
@@ -53,7 +59,21 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void game(){
-
+        /*Si el indice es menor o igual que 15 incrementamos una unidad*/
+        if(ind <= 15) ind++;
+        else {
+            /*Partida finalizada*/
+            ind = 0;
+        }
+        /*Habilitamos los botones*/
+        b1.setEnabled(true); b2.setEnabled(true); b3.setEnabled(true); b4.setEnabled(true);
+        /*Dejamos el color original*/
+        b1.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b2.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b3.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        b4.setBackgroundColor(getResources().getColor(R.color.colorGrey));
+        /*Ejecutamos la siguiente pregunta*/
+        assingation(ind);
     }
 
     public void assingation(int index){
@@ -72,6 +92,7 @@ public class GameActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.option1:
                 if (correct == 1){
+                    points = points + 100;
                     b1.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -81,9 +102,11 @@ public class GameActivity extends AppCompatActivity {
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
                 }
+                //game();
                 break;
             case R.id.option2:
                 if (correct == 2) {
+                    points = points + 100;
                     b2.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -93,10 +116,12 @@ public class GameActivity extends AppCompatActivity {
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
                 }
+                //game();
                 break;
 
             case R.id.option3:
                 if (correct == 3) {
+                    points = points + 100;
                     b3.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -106,10 +131,12 @@ public class GameActivity extends AppCompatActivity {
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b4.setEnabled(false);
                 }
+                //game();
                 break;
 
             case R.id.option4:
                 if (correct == 4) {
+                    points = points + 100;
                     b4.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
@@ -119,6 +146,7 @@ public class GameActivity extends AppCompatActivity {
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b3.setEnabled(false);
                 }
+                //game();
                 break;
         }
     }
