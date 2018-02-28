@@ -139,19 +139,69 @@ public class GameActivity extends AppCompatActivity {
         switch(item.getItemId()){
 
             case R.id.menu_fifty:
-                //Intent about = new Intent(this, AboutActivity.class);
-                //startActivity(about);
-
-                b1.setEnabled(false);
+                if(Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 2) {
+                    b1.setEnabled(false); b2.setEnabled(false);
+                } else {
+                    if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
+                        b1.setEnabled(false); b3.setEnabled(false);
+                    } else {
+                        if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                            b1.setEnabled(false); b4.setEnabled(false);
+                        } else {
+                            if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
+                                b2.setEnabled(false); b3.setEnabled(false);
+                            } else {
+                                if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                                    b2.setEnabled(false); b4.setEnabled(false);
+                                } else {
+                                    if (Integer.parseInt(questions.get(ind).getFifty1()) == 3 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                                        b3.setEnabled(false); b4.setEnabled(false);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
 
             case R.id.menu_people:
-                b2.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                if(Integer.parseInt(questions.get(ind).getAudience()) == 1) {
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                } else {
+                    if(Integer.parseInt(questions.get(ind).getAudience()) == 2) {
+                        b2.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                    }
+                    else {
+                        if(Integer.parseInt(questions.get(ind).getAudience()) == 3) {
+                            b3.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                        }
+                        else {
+                            if(Integer.parseInt(questions.get(ind).getAudience()) == 4) {
+                                b4.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                            }
+                        }
+                    }
+                }
                 break;
 
             case R.id.menu_phone:
-                b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
-                b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                if(Integer.parseInt(questions.get(ind).getPhone()) == 1) {
+                    b1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                } else {
+                    if(Integer.parseInt(questions.get(ind).getPhone()) == 2) {
+                        b2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                    }
+                    else {
+                        if(Integer.parseInt(questions.get(ind).getPhone()) == 3) {
+                            b3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                        }
+                        else {
+                            if(Integer.parseInt(questions.get(ind).getPhone()) == 4) {
+                                b4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                            }
+                        }
+                    }
+                }
                 break;
 
             case R.id.menu_cancel:
