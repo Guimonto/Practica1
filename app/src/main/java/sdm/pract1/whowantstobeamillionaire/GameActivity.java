@@ -8,6 +8,7 @@ import sdm.pract1.whowantstobeamillionaire.pojo.Question;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -25,6 +26,9 @@ public class GameActivity extends AppCompatActivity {
     private TextView play_for;
     private TextView number_question;
     private TextView current_question;
+    private int ind;
+    private int points;
+    private int correct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +42,47 @@ public class GameActivity extends AppCompatActivity {
         play_for = (TextView) findViewById(R.id.PF_MN);
         number_question = (TextView) findViewById(R.id.QT_NB);
         current_question = (TextView) findViewById(R.id.question);
+        points = 0; correct = 0;
+
         /*Obtenemos la lista de preguntas*/
         questions = generateQuestionList();
-
-        game();
+        /*Indice de preguntas*/
+        ind = 0;
+        /*Mostramos por pantalla la primera pregunta*/
+        assingation(ind);
     }
 
     private void game(){
+
+    }
+
+    public void assingation(int index){
+        int a = index;
         play_for.setText("100$");
-        number_question.setText(questions.get(0).getNumber());
-        current_question.setText(questions.get(0).getText());
-        b1.setText(questions.get(0).getAnswer1());
-        b2.setText(questions.get(0).getAnswer2());
-        b3.setText(questions.get(0).getAnswer3());
-        b4.setText(questions.get(0).getAnswer4());
+        number_question.setText(questions.get(a).getNumber());
+        current_question.setText(questions.get(a).getText());
+        b1.setText(questions.get(a).getAnswer1());
+        b2.setText(questions.get(a).getAnswer2());
+        b3.setText(questions.get(a).getAnswer3());
+        b4.setText(questions.get(a).getAnswer4());
+    }
+
+    public void clickButton(View v){
+        correct = Integer.parseInt(questions.get(ind).getRight());
+        switch (v.getId()){
+            case R.id.option1:
+                
+                break;
+
+            case R.id.option2:
+                break;
+
+            case R.id.option3:
+                break;
+
+            case R.id.option4:
+                break;
+        }
     }
 
     @Override
@@ -86,7 +117,6 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_cancel:
-                closeContextMenu();
                 break;
         }
         return super.onOptionsItemSelected(item);

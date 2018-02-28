@@ -43,6 +43,11 @@ public class ScoreActivity extends AppCompatActivity {
 
         scoreListViewUser.setAdapter(adapter);
 
+        ScoreListFriends = new ArrayList<>();
+        ScoreListFriends.addAll(getMockUserScore());
+
+        if(ScoreListUser.size() > 0)
+            clearUserScore = true;
 
         TabHost host = (TabHost) findViewById(R.id.my_tab_host);
         host.setup();
@@ -54,12 +59,6 @@ public class ScoreActivity extends AppCompatActivity {
         spec.setIndicator("Friends", getResources().getDrawable(R.drawable.descarga2));
         spec.setContent(R.id.tab2);
         host.addTab(spec);
-
-        ScoreListFriends = new ArrayList<>();
-        ScoreListFriends = getMockUserScore();
-
-        if(ScoreListUser.size() > 0)
-            clearUserScore = true;
     }
 
     @Override
