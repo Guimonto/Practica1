@@ -65,7 +65,7 @@ public class ScoreActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.score_menu, menu);
 
-        //menu.findItem(R.id.delete_score).setVisible(clearUserScore);
+        menu.findItem(R.id.delete_score).setVisible(clearUserScore);
 
         return true;
     }
