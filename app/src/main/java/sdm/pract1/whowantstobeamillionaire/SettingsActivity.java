@@ -5,6 +5,7 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
+import android.widget.RadioButton;
 
 public class SettingsActivity extends AppCompatActivity {
 
@@ -12,6 +13,18 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        EditText n = (EditText) findViewById(R.id.etName);
+        RadioButton h0 = (RadioButton) findViewById(R.id.button0help);
+        RadioButton h1 = (RadioButton) findViewById(R.id.button1help);
+        RadioButton h2 = (RadioButton) findViewById(R.id.button2help);
+        RadioButton h3 = (RadioButton) findViewById(R.id.button3help);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        n.setText(prefs.getString("username", ""));
+        h0.setChecked(prefs.getBoolean("help0", false));
+        h1.setChecked(prefs.getBoolean("help1", false));
+        h2.setChecked(prefs.getBoolean("help2", false));
+        h3.setChecked(prefs.getBoolean("help3", true));
     }
 
     @Override
@@ -27,5 +40,4 @@ public class SettingsActivity extends AppCompatActivity {
         editor.apply();
         super.onPause();
     }
-
 }
