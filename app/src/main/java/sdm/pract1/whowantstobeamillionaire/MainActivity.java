@@ -2,6 +2,7 @@ package sdm.pract1.whowantstobeamillionaire;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,22 +34,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickButtons(View v){
+
+        Intent intent = null;
         switch (v.getId()){
 
             case R.id.ibPlay:
-                Intent play = new Intent(this, GameActivity.class);
-                startActivity(play);
+                intent = new Intent(this, GameActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.ibScore:
-                Intent score = new Intent(this, ScoreActivity.class);
-                startActivity(score);
+                intent = new Intent(this, ScoreActivity.class);
+                startActivity(intent);
                 break;
 
             case R.id.ibSettings:
-                Intent settings = new Intent(this, SettingsActivity.class);
-                startActivity(settings);
+               intent = new Intent(this, SettingsActivity.class);
+                startActivity(intent);
                 break;
+        }
+
+        if (intent != null) {
+            startActivity(intent);
         }
     }
 }
