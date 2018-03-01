@@ -45,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
         play_for = (TextView) findViewById(R.id.PF_MN);
         number_question = (TextView) findViewById(R.id.QT_NB);
         current_question = (TextView) findViewById(R.id.question);
-        points = 0; correct = 0;
+        points = R.string.price0; correct = 0;
 
         b1.setBackgroundColor(getResources().getColor(R.color.colorGrey));
         b2.setBackgroundColor(getResources().getColor(R.color.colorGrey));
@@ -80,13 +80,157 @@ public class GameActivity extends AppCompatActivity {
 
     public void assingation(int index){
         int a = index;
-        play_for.setText("100$");
-        number_question.setText(questions.get(a).getNumber());
-        current_question.setText(questions.get(a).getText());
-        b1.setText(questions.get(a).getAnswer1());
-        b2.setText(questions.get(a).getAnswer2());
-        b3.setText(questions.get(a).getAnswer3());
-        b4.setText(questions.get(a).getAnswer4());
+        switch (a) {
+            case 0:
+                play_for.setText(R.string.price100);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 1:
+                play_for.setText(R.string.price200);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 2:
+                play_for.setText(R.string.price300);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 3:
+                play_for.setText(R.string.price500);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 4:
+                play_for.setText(R.string.price1000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 5:
+                play_for.setText(R.string.price2000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 6:
+                play_for.setText(R.string.price4000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 7:
+                play_for.setText(R.string.price8000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 8:
+                play_for.setText(R.string.price16000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 9:
+                play_for.setText(R.string.price32000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 10:
+                play_for.setText(R.string.price64000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 11:
+                play_for.setText(R.string.price125000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 12:
+                play_for.setText(R.string.price250000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 13:
+                play_for.setText(R.string.price500000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+
+            case 14:
+                play_for.setText(R.string.price1000000);
+                number_question.setText(questions.get(a).getNumber());
+                current_question.setText(questions.get(a).getText());
+                b1.setText(questions.get(a).getAnswer1());
+                b2.setText(questions.get(a).getAnswer2());
+                b3.setText(questions.get(a).getAnswer3());
+                b4.setText(questions.get(a).getAnswer4());
+                break;
+        }
     }
 
     public void clickButtons(View v){
@@ -352,7 +496,7 @@ public class GameActivity extends AppCompatActivity {
 
         q = new Question(
                 "6",
-                "Who was the third James Bond actor in the MGM films? (Do not include &apos;Casino Royale&apos;.)",
+                "Who was the third James Bond actor in the MGM films? (Do not include &apos;Casino Royale&apos?",
                 "Roger Moore",
                 "Pierce Brosnan",
                 "Timothy Dalton",

@@ -14,17 +14,12 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        EditText n = (EditText) findViewById(R.id.etName);
-        RadioButton h0 = (RadioButton) findViewById(R.id.button0help);
-        RadioButton h1 = (RadioButton) findViewById(R.id.button1help);
-        RadioButton h2 = (RadioButton) findViewById(R.id.button2help);
-        RadioButton h3 = (RadioButton) findViewById(R.id.button3help);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        n.setText(prefs.getString("username", ""));
-        h0.setChecked(prefs.getBoolean("help0", false));
-        h1.setChecked(prefs.getBoolean("help1", false));
-        h2.setChecked(prefs.getBoolean("help2", false));
-        h3.setChecked(prefs.getBoolean("help3", true));
+        ((EditText) findViewById(R.id.etName)).setText(prefs.getString("username", ""));
+        ((RadioButton) findViewById(R.id.button0help)).setChecked(prefs.getBoolean("help0", false));
+        ((RadioButton) findViewById(R.id.button1help)).setChecked(prefs.getBoolean("help1", false));
+        ((RadioButton) findViewById(R.id.button2help)).setChecked(prefs.getBoolean("help2", false));
+        ((RadioButton) findViewById(R.id.button3help)).setChecked(prefs.getBoolean("help3", true));
     }
 
     @Override
@@ -32,10 +27,10 @@ public class SettingsActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString("username", ((EditText) findViewById(R.id.etName)).getText().toString());
-        editor.putBoolean("help0", findViewById(R.id.button0help).isSelected());
-        editor.putBoolean("help1", findViewById(R.id.button1help).isSelected());
-        editor.putBoolean("help2", findViewById(R.id.button2help).isSelected());
-        editor.putBoolean("help3", findViewById(R.id.button3help).isSelected());
+        editor.putBoolean("help0", ((RadioButton) findViewById(R.id.button0help)).isChecked());
+        editor.putBoolean("help1", ((RadioButton) findViewById(R.id.button1help)).isChecked());
+        editor.putBoolean("help2", ((RadioButton) findViewById(R.id.button2help)).isChecked());
+        editor.putBoolean("help3", ((RadioButton) findViewById(R.id.button3help)).isChecked());
 
         editor.apply();
         super.onPause();

@@ -19,4 +19,20 @@
     <string name="delete_score">Are you sure you want to delete the score?</string>
     <string name="score_local">Local</string>
     <string name="score_friends">Friends</string>
+    <string name="price0">0$</string>
+    <string name="price100">100$</string>
+    <string name="price200">200$</string>
+    <string name="price300">300$</string>
+    <string name="price500">500$</string>
+    <string name="price1000">1000$</string>
+    <string name="price2000">2000$</string>
+    <string name="price4000">4000$</string>
+    <string name="price8000">8000$</string>
+    <string name="price16000">16000$</string>
+    <string name="price32000">32000$</string>
+    <string name="price64000">64000$</string>
+    <string name="price125000">125000$</string>
+    <string name="price250000">250000$</string>
+    <string name="price500000">500000$</string>
+    <string name="price1000000">1000000$</string>
 </resources>
