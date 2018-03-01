@@ -35,6 +35,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+
         /*Inicializamos aqui las variables*/
         b1 = (Button) findViewById(R.id.option1);
         b2 = (Button) findViewById(R.id.option2);
@@ -50,27 +51,35 @@ public class GameActivity extends AppCompatActivity {
         b3.setBackgroundColor(getResources().getColor(R.color.colorGrey));
         b4.setBackgroundColor(getResources().getColor(R.color.colorGrey));
 
+
         /*Obtenemos la lista de preguntas*/
         questions = generateQuestionList();
         /*Indice de preguntas*/
-        ind = 0;
-        /*Mostramos por pantalla la primera pregunta*/
-        assingation(ind);
+        //ind = 0;
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         ((TextView) findViewById(R.id.question)).setText(prefs.getString("question", ""));
         ((TextView) findViewById(R.id.QT_NB)).setText(prefs.getString("question_number", ""));
         ((TextView) findViewById(R.id.PF_MN)).setText(prefs.getString("play_for", ""));
         points = prefs.getInt("score", 0);
+        correct = prefs.getInt("right", 0);
+        ind = prefs.getInt("indice", 0);
         ((Button) findViewById(R.id.option1)).setText(prefs.getString("button1", ""));
         ((Button) findViewById(R.id.option2)).setText(prefs.getString("button2", ""));
         ((Button) findViewById(R.id.option3)).setText(prefs.getString("button3", ""));
         ((Button) findViewById(R.id.option4)).setText(prefs.getString("button4", ""));
+        /*findViewById(R.id.menu_fifty).setEnabled(prefs.getBoolean("fifty", true));
+        findViewById(R.id.menu_people).setEnabled(prefs.getBoolean("people", true));
+        findViewById(R.id.menu_phone).setEnabled(prefs.getBoolean("phone", true));*/
+
+
+        assignation(ind);
+
     }
 
     private void game(){
         /*Si el indice es menor o igual que 15 incrementamos una unidad*/
-        if(ind <= 15) ind++;
+        if(ind < 15) ind++;
         else {
             /*Partida finalizada*/
             ind = 0;
@@ -83,10 +92,10 @@ public class GameActivity extends AppCompatActivity {
         b3.setBackgroundColor(getResources().getColor(R.color.colorGrey));
         b4.setBackgroundColor(getResources().getColor(R.color.colorGrey));
         /*Ejecutamos la siguiente pregunta*/
-        assingation(ind);
+        assignation(ind);
     }
 
-    public void assingation(int index){
+    public void assignation(int index){
         int a = index;
         switch (a) {
             case 0:
@@ -529,6 +538,8 @@ public class GameActivity extends AppCompatActivity {
 
             case R.id.menu_cancel:
 
+                ind = 0;
+                assignation(ind);
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -539,6 +550,8 @@ public class GameActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = prefs.edit();
 
+        MenuItem item;
+
         editor.putString("play_for", ((TextView) findViewById(R.id.PF_MN)).getText().toString());
         editor.putString("question_number", ((TextView) findViewById(R.id.QT_NB)).getText().toString());
         editor.putInt("score", points);
@@ -547,6 +560,11 @@ public class GameActivity extends AppCompatActivity {
         editor.putString("button2", ((TextView) findViewById(R.id.option2)).getText().toString());
         editor.putString("button3", ((TextView) findViewById(R.id.option3)).getText().toString());
         editor.putString("button4", ((TextView) findViewById(R.id.option4)).getText().toString());
+        editor.putInt("right", Integer.parseInt(questions.get(ind).getRight()));
+        editor.putInt("indice", ind);
+        editor.putBoolean("fifty", (findViewById(R.id.menu_fifty)).isEnabled());
+        editor.putBoolean("people", (findViewById(R.id.menu_people)).isEnabled());
+        editor.putBoolean("phone",(findViewById(R.id.menu_phone)).isEnabled());
 
 
         editor.apply();
