@@ -1,6 +1,8 @@
 package sdm.pract1.whowantstobeamillionaire;
 
+import android.content.SharedPreferences;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import sdm.pract1.whowantstobeamillionaire.pojo.Question;
@@ -32,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
         /*Inicializamos aqui las variables*/
         b1 = (Button) findViewById(R.id.option1);
         b2 = (Button) findViewById(R.id.option2);
@@ -53,6 +56,16 @@ public class GameActivity extends AppCompatActivity {
         ind = 0;
         /*Mostramos por pantalla la primera pregunta*/
         assingation(ind);
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        ((TextView) findViewById(R.id.question)).setText(prefs.getString("question", ""));
+        ((TextView) findViewById(R.id.QT_NB)).setText(prefs.getString("question_number", ""));
+        ((TextView) findViewById(R.id.PF_MN)).setText(prefs.getString("play_for", ""));
+        points = prefs.getInt("score", 0);
+        ((Button) findViewById(R.id.option1)).setText(prefs.getString("button1", ""));
+        ((Button) findViewById(R.id.option2)).setText(prefs.getString("button2", ""));
+        ((Button) findViewById(R.id.option3)).setText(prefs.getString("button3", ""));
+        ((Button) findViewById(R.id.option4)).setText(prefs.getString("button4", ""));
     }
 
     private void game(){
@@ -229,6 +242,7 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    //Segun el numero de pregunta asigna una puntuación
     private void puntuacion(int aux){
         switch (aux){
             case 0:
@@ -514,9 +528,30 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_cancel:
+
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause(){
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putString("play_for", ((TextView) findViewById(R.id.PF_MN)).getText().toString());
+        editor.putString("question_number", ((TextView) findViewById(R.id.QT_NB)).getText().toString());
+        editor.putInt("score", points);
+        editor.putString("question", ((TextView) findViewById(R.id.question)).getText().toString());
+        editor.putString("button1", ((TextView) findViewById(R.id.option1)).getText().toString());
+        editor.putString("button2", ((TextView) findViewById(R.id.option2)).getText().toString());
+        editor.putString("button3", ((TextView) findViewById(R.id.option3)).getText().toString());
+        editor.putString("button4", ((TextView) findViewById(R.id.option4)).getText().toString());
+
+
+        editor.apply();
+        super.onPause();
+
     }
 
     public List<Question> generateQuestionList() {
