@@ -32,7 +32,6 @@ public class GameActivity extends AppCompatActivity {
     private int ind; /*Indice*/
     private int points; /*Puntos*/
     private int correct; /*Respuesta correcta*/
-    private long temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
         play_for = (TextView) findViewById(R.id.PF_MN);
         number_question = (TextView) findViewById(R.id.QT_NB);
         current_question = (TextView) findViewById(R.id.question);
-        points = 0; correct = 0; temp = 1000;
+        points = 0; correct = 0;
 
         b1.setBackgroundColor(getResources().getColor(R.color.colorGrey));
         b2.setBackgroundColor(getResources().getColor(R.color.colorGrey));
@@ -113,7 +112,6 @@ public class GameActivity extends AppCompatActivity {
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
                 }
-                //game();
                 break;
             case R.id.option2:
                 if (correct == 2) {
@@ -135,7 +133,6 @@ public class GameActivity extends AppCompatActivity {
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
                 }
-                //game();
                 break;
 
             case R.id.option3:
@@ -158,7 +155,6 @@ public class GameActivity extends AppCompatActivity {
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b4.setEnabled(false);
                 }
-                //game();
                 break;
 
             case R.id.option4:
@@ -181,7 +177,6 @@ public class GameActivity extends AppCompatActivity {
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b3.setEnabled(false);
                 }
-                //game();
                 break;
         }
     }
@@ -225,6 +220,7 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                findViewById(R.id.menu_fifty).setEnabled(false);
                 break;
 
             case R.id.menu_people:
@@ -245,6 +241,7 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                findViewById(R.id.menu_people).setEnabled(false);
                 break;
 
             case R.id.menu_phone:
@@ -265,6 +262,7 @@ public class GameActivity extends AppCompatActivity {
                         }
                     }
                 }
+                findViewById(R.id.menu_phone).setEnabled(false);
                 break;
 
             case R.id.menu_cancel:
