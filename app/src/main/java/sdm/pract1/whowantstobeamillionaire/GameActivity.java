@@ -1,22 +1,17 @@
 package sdm.pract1.whowantstobeamillionaire;
 
-import android.content.Intent;
-import android.os.CountDownTimer;
 import android.os.Handler;
-import android.os.SystemClock;
-import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import sdm.pract1.whowantstobeamillionaire.pojo.Question;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class GameActivity extends AppCompatActivity {
 //En este espacio solo se pueden crear variables pero NO inicializarlas, porque hace que se cierre la aplicacion
@@ -229,20 +224,92 @@ public class GameActivity extends AppCompatActivity {
                 b2.setText(questions.get(a).getAnswer2());
                 b3.setText(questions.get(a).getAnswer3());
                 b4.setText(questions.get(a).getAnswer4());
+
                 break;
         }
     }
 
+    private void puntuacion(int aux){
+        switch (aux){
+            case 0:
+                points = 0;
+                break;
+
+            case 1:
+                points = 100;
+                break;
+
+            case 2:
+                points = 200;
+                break;
+
+            case 3:
+                points = 300;
+                break;
+
+            case 4:
+                points = 500;
+                break;
+
+            case 5:
+                points = 1000;
+                break;
+
+            case 6:
+                points = 2000;
+                break;
+
+            case 7:
+                points = 4000;
+                break;
+
+            case 8:
+                points = 8000;
+                break;
+
+            case 9:
+                points = 16000;
+                break;
+
+            case 10:
+                points = 32000;
+                break;
+
+            case 11:
+                points = 64000;
+                break;
+
+            case 12:
+                points = 125000;
+                break;
+
+            case 13:
+                points = 250000;
+                break;
+
+            case 14:
+                points = 500000;
+                break;
+
+            case 15:
+                points = 1000000;
+                break;
+        }
+
+    }
+
     public void clickButtons(View v){
         correct = Integer.parseInt(questions.get(ind).getRight());
+        int cont = 0;
         switch (v.getId()){
             case R.id.option1:
                 if (correct == 1){
-                    points = points + 100;
+                    puntuacion(cont);
                     b1.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    cont++;
 
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -253,17 +320,27 @@ public class GameActivity extends AppCompatActivity {
                     },3000);
                 }
                 else{
+                    if(cont < 5 )
+                    puntuacion(0);
+                    else {
+                        if (cont >= 5 & cont < 10) puntuacion(5);
+                        else {
+                            if (cont >= 10) puntuacion(10);
+                        }
+                    }
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
+
                 }
                 break;
             case R.id.option2:
                 if (correct == 2) {
-                    points = points + 100;
+                    puntuacion(cont);
                     b2.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    cont ++;
 
                     Handler handler2 = new Handler();
                     handler2.postDelayed(new Runnable() {
@@ -274,6 +351,15 @@ public class GameActivity extends AppCompatActivity {
                     },3000);
                 }
                 else{
+
+                    if(cont < 5 )
+                        puntuacion(0);
+                    else {
+                        if (cont >= 5 & cont < 10) puntuacion(5);
+                        else {
+                            if (cont >= 10) puntuacion(10);
+                        }
+                    }
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
                 }
@@ -281,11 +367,12 @@ public class GameActivity extends AppCompatActivity {
 
             case R.id.option3:
                 if (correct == 3) {
-                    points = points + 100;
+                    puntuacion(cont);
                     b3.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    cont++;
 
                     Handler handler3 = new Handler();
                     handler3.postDelayed(new Runnable() {
@@ -296,6 +383,14 @@ public class GameActivity extends AppCompatActivity {
                     },3000);
                 }
                 else {
+                    if(cont < 5 )
+                        puntuacion(0);
+                    else {
+                        if (cont >= 5 & cont < 10) puntuacion(5);
+                        else {
+                            if (cont >= 10) puntuacion(10);
+                        }
+                    }
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b4.setEnabled(false);
                 }
@@ -303,11 +398,12 @@ public class GameActivity extends AppCompatActivity {
 
             case R.id.option4:
                 if (correct == 4) {
-                    points = points + 100;
+                    puntuacion(cont);
                     b4.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
+                    cont++;
 
                     Handler handler4 = new Handler();
                     handler4.postDelayed(new Runnable() {
@@ -318,6 +414,14 @@ public class GameActivity extends AppCompatActivity {
                     },3000);
                 }
                 else {
+                    if(cont < 5 )
+                        puntuacion(0);
+                    else {
+                        if (cont >= 5 & cont < 10) puntuacion(5);
+                        else {
+                            if (cont >= 10) puntuacion(10);
+                        }
+                    }
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b3.setEnabled(false);
                 }

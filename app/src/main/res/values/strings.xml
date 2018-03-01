@@ -35,4 +35,5 @@
     <string name="price250000">250000$</string>
     <string name="price500000">500000$</string>
     <string name="price1000000">1000000$</string>
+    <string name="end_game">Enhorabuena! has ganado </string>
 </resources>
