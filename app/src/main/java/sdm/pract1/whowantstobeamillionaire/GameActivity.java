@@ -1,8 +1,10 @@
 package sdm.pract1.whowantstobeamillionaire;
 
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import sdm.pract1.whowantstobeamillionaire.pojo.Question;
@@ -68,9 +70,9 @@ public class GameActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.option2)).setText(prefs.getString("button2", ""));
         ((Button) findViewById(R.id.option3)).setText(prefs.getString("button3", ""));
         ((Button) findViewById(R.id.option4)).setText(prefs.getString("button4", ""));
-        /*findViewById(R.id.menu_fifty).setEnabled(prefs.getBoolean("fifty", true));
+        findViewById(R.id.menu_fifty).setEnabled(prefs.getBoolean("fifty", true));
         findViewById(R.id.menu_people).setEnabled(prefs.getBoolean("people", true));
-        findViewById(R.id.menu_phone).setEnabled(prefs.getBoolean("phone", true));*/
+        findViewById(R.id.menu_phone).setEnabled(prefs.getBoolean("phone", true));
 
 
         assignation(ind);
@@ -327,12 +329,13 @@ public class GameActivity extends AppCompatActivity {
         switch (v.getId()){
             case R.id.option1:
                 if (correct == 1){
+                    cont++;
                     puntuacion(cont);
                     b1.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
-                    cont++;
+
 
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
@@ -358,12 +361,13 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case R.id.option2:
                 if (correct == 2) {
+                    cont ++;
                     puntuacion(cont);
                     b2.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
-                    cont ++;
+
 
                     Handler handler2 = new Handler();
                     handler2.postDelayed(new Runnable() {
@@ -390,12 +394,12 @@ public class GameActivity extends AppCompatActivity {
 
             case R.id.option3:
                 if (correct == 3) {
+                    cont ++;
                     puntuacion(cont);
                     b3.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
-                    cont++;
 
                     Handler handler3 = new Handler();
                     handler3.postDelayed(new Runnable() {
@@ -421,12 +425,12 @@ public class GameActivity extends AppCompatActivity {
 
             case R.id.option4:
                 if (correct == 4) {
+                    cont ++;
                     puntuacion(cont);
                     b4.setBackgroundColor(getResources().getColor(R.color.colorGreen));
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
-                    cont++;
 
                     Handler handler4 = new Handler();
                     handler4.postDelayed(new Runnable() {
@@ -459,88 +463,114 @@ public class GameActivity extends AppCompatActivity {
         menu.findItem(R.id.menu_phone).setVisible(true);
         menu.findItem(R.id.menu_fifty).setVisible(true);
         menu.findItem(R.id.menu_people).setVisible(true);
+        menu.findItem(R.id.menu_phone).setEnabled(true);
+        menu.findItem(R.id.menu_fifty).setEnabled(true);
+        menu.findItem(R.id.menu_people).setEnabled(true);
 
         return true;
     }
 
    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId()){
+    public boolean onOptionsItemSelected(MenuItem item) {
+       switch (item.getItemId()) {
 
-            case R.id.menu_fifty:
-                if(Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 2) {
-                    b1.setEnabled(false); b2.setEnabled(false);
-                } else {
-                    if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
-                        b1.setEnabled(false); b3.setEnabled(false);
-                    } else {
-                        if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
-                            b1.setEnabled(false); b4.setEnabled(false);
-                        } else {
-                            if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
-                                b2.setEnabled(false); b3.setEnabled(false);
-                            } else {
-                                if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
-                                    b2.setEnabled(false); b4.setEnabled(false);
-                                } else {
-                                    if (Integer.parseInt(questions.get(ind).getFifty1()) == 3 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
-                                        b3.setEnabled(false); b4.setEnabled(false);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                findViewById(R.id.menu_fifty).setEnabled(false);
-                break;
+           case R.id.menu_fifty:
+               if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 2) {
+                   b1.setEnabled(false);
+                   b2.setEnabled(false);
+               } else {
+                   if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
+                       b1.setEnabled(false);
+                       b3.setEnabled(false);
+                   } else {
+                       if (Integer.parseInt(questions.get(ind).getFifty1()) == 1 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                           b1.setEnabled(false);
+                           b4.setEnabled(false);
+                       } else {
+                           if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 3) {
+                               b2.setEnabled(false);
+                               b3.setEnabled(false);
+                           } else {
+                               if (Integer.parseInt(questions.get(ind).getFifty1()) == 2 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                                   b2.setEnabled(false);
+                                   b4.setEnabled(false);
+                               } else {
+                                   if (Integer.parseInt(questions.get(ind).getFifty1()) == 3 && Integer.parseInt(questions.get(ind).getFifty2()) == 4) {
+                                       b3.setEnabled(false);
+                                       b4.setEnabled(false);
+                                   }
+                               }
+                           }
+                       }
+                   }
+               }
+               findViewById(R.id.menu_fifty).setEnabled(false);
+               break;
 
-            case R.id.menu_people:
-                if(Integer.parseInt(questions.get(ind).getAudience()) == 1) {
-                    b1.setBackgroundColor(getResources().getColor(R.color.colorYellow));
-                } else {
-                    if(Integer.parseInt(questions.get(ind).getAudience()) == 2) {
-                        b2.setBackgroundColor(getResources().getColor(R.color.colorYellow));
-                    }
-                    else {
-                        if(Integer.parseInt(questions.get(ind).getAudience()) == 3) {
-                            b3.setBackgroundColor(getResources().getColor(R.color.colorYellow));
-                        }
-                        else {
-                            if(Integer.parseInt(questions.get(ind).getAudience()) == 4) {
-                                b4.setBackgroundColor(getResources().getColor(R.color.colorYellow));
-                            }
-                        }
-                    }
-                }
-                findViewById(R.id.menu_people).setEnabled(false);
-                break;
+           case R.id.menu_people:
+               if (Integer.parseInt(questions.get(ind).getAudience()) == 1) {
+                   b1.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+               } else {
+                   if (Integer.parseInt(questions.get(ind).getAudience()) == 2) {
+                       b2.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                   } else {
+                       if (Integer.parseInt(questions.get(ind).getAudience()) == 3) {
+                           b3.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                       } else {
+                           if (Integer.parseInt(questions.get(ind).getAudience()) == 4) {
+                               b4.setBackgroundColor(getResources().getColor(R.color.colorYellow));
+                           }
+                       }
+                   }
+               }
+               findViewById(R.id.menu_people).setEnabled(false);
+               break;
 
-            case R.id.menu_phone:
-                if(Integer.parseInt(questions.get(ind).getPhone()) == 1) {
-                    b1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                } else {
-                    if(Integer.parseInt(questions.get(ind).getPhone()) == 2) {
-                        b2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                    }
-                    else {
-                        if(Integer.parseInt(questions.get(ind).getPhone()) == 3) {
-                            b3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                        }
-                        else {
-                            if(Integer.parseInt(questions.get(ind).getPhone()) == 4) {
-                                b4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
-                            }
-                        }
-                    }
-                }
-                findViewById(R.id.menu_phone).setEnabled(false);
-                break;
+           case R.id.menu_phone:
+               if (Integer.parseInt(questions.get(ind).getPhone()) == 1) {
+                   b1.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+               } else {
+                   if (Integer.parseInt(questions.get(ind).getPhone()) == 2) {
+                       b2.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                   } else {
+                       if (Integer.parseInt(questions.get(ind).getPhone()) == 3) {
+                           b3.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                       } else {
+                           if (Integer.parseInt(questions.get(ind).getPhone()) == 4) {
+                               b4.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+                           }
+                       }
+                   }
+               }
+               findViewById(R.id.menu_phone).setEnabled(false);
+               break;
 
-            case R.id.menu_cancel:
+           case R.id.menu_cancel:
 
-                ind = 0;
-                assignation(ind);
-                break;
+               AlertDialog.Builder builder = new AlertDialog.Builder(this);
+               builder.setMessage(R.string.surrender);
+
+               builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                   @Override
+                   public void onClick(DialogInterface dialog, int which) {
+                       if (ind < 5)
+                           puntuacion(0);
+                       else {
+                           if (ind >= 5 & ind < 10) puntuacion(5);
+                           else {
+                               if (ind >= 10) puntuacion(10);
+                           }
+                       }
+                       ind = 0;
+                       assignation(ind);
+                   }
+               });
+
+               builder.setNegativeButton(android.R.string.no, null);
+
+               builder.create().show();
+               return true;
+
         }
         return super.onOptionsItemSelected(item);
     }
