@@ -35,6 +35,7 @@
     <string name="price250000">250000$</string>
     <string name="price500000">500000$</string>
     <string name="price1000000">1000000$</string>
-    <string name="end_game">Enhorabuena! has ganado </string>
+    <string name="end_game">Congratulations, you win! </string>
     <string name="surrender">Are you sure you want to retire? </string>
+    <string name="looser">You loose...</string>
 </resources>

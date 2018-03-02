@@ -1,6 +1,7 @@
 package sdm.pract1.whowantstobeamillionaire;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.preference.PreferenceManager;
@@ -13,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,9 +73,6 @@ public class GameActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.option2)).setText(prefs.getString("button2", ""));
         ((Button) findViewById(R.id.option3)).setText(prefs.getString("button3", ""));
         ((Button) findViewById(R.id.option4)).setText(prefs.getString("button4", ""));
-        findViewById(R.id.menu_fifty).setEnabled(prefs.getBoolean("fifty", true));
-        findViewById(R.id.menu_people).setEnabled(prefs.getBoolean("people", true));
-        findViewById(R.id.menu_phone).setEnabled(prefs.getBoolean("phone", true));
 
 
         assignation(ind);
@@ -356,6 +356,21 @@ public class GameActivity extends AppCompatActivity {
                     }
                     b1.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b2.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GameActivity.this, R.string.looser, Toast.LENGTH_LONG).show();
+                        }
+                    },200);
+                    ind = 0;
+                    assignation(ind);
+                    findViewById(R.id.menu_fifty).setEnabled(true);
+                    findViewById(R.id.menu_people).setEnabled(true);
+                    findViewById(R.id.menu_phone).setEnabled(true);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+
 
                 }
                 break;
@@ -389,6 +404,20 @@ public class GameActivity extends AppCompatActivity {
                     }
                     b2.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b3.setEnabled(false);b4.setEnabled(false);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GameActivity.this, R.string.looser, Toast.LENGTH_LONG).show();
+                        }
+                    },200);
+                    ind = 0;
+                    assignation(ind);
+                    findViewById(R.id.menu_fifty).setEnabled(true);
+                    findViewById(R.id.menu_people).setEnabled(true);
+                    findViewById(R.id.menu_phone).setEnabled(true);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
                 }
                 break;
 
@@ -420,6 +449,20 @@ public class GameActivity extends AppCompatActivity {
                     }
                     b3.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b4.setEnabled(false);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GameActivity.this, R.string.looser, Toast.LENGTH_LONG).show();
+                        }
+                    },200);
+                    ind = 0;
+                    assignation(ind);
+                    findViewById(R.id.menu_fifty).setEnabled(true);
+                    findViewById(R.id.menu_people).setEnabled(true);
+                    findViewById(R.id.menu_phone).setEnabled(true);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
                 }
                 break;
 
@@ -451,6 +494,20 @@ public class GameActivity extends AppCompatActivity {
                     }
                     b4.setBackgroundColor(getResources().getColor(R.color.colorRed));
                     b1.setEnabled(false);b2.setEnabled(false);b3.setEnabled(false);
+                    Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(GameActivity.this, R.string.looser, Toast.LENGTH_LONG).show();
+                        }
+                    },200);
+                    ind = 0;
+                    assignation(ind);
+                    findViewById(R.id.menu_fifty).setEnabled(true);
+                    findViewById(R.id.menu_people).setEnabled(true);
+                    findViewById(R.id.menu_phone).setEnabled(true);
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
                 }
                 break;
         }
@@ -463,9 +520,11 @@ public class GameActivity extends AppCompatActivity {
         menu.findItem(R.id.menu_phone).setVisible(true);
         menu.findItem(R.id.menu_fifty).setVisible(true);
         menu.findItem(R.id.menu_people).setVisible(true);
-        menu.findItem(R.id.menu_phone).setEnabled(true);
-        menu.findItem(R.id.menu_fifty).setEnabled(true);
-        menu.findItem(R.id.menu_people).setEnabled(true);
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        menu.findItem(R.id.menu_phone).setEnabled(prefs.getBoolean("phone", true));
+        menu.findItem(R.id.menu_fifty).setEnabled(prefs.getBoolean("fifty", true));
+        menu.findItem(R.id.menu_people).setEnabled(prefs.getBoolean("people", true));
+
 
         return true;
     }
@@ -550,7 +609,7 @@ public class GameActivity extends AppCompatActivity {
                AlertDialog.Builder builder = new AlertDialog.Builder(this);
                builder.setMessage(R.string.surrender);
 
-               builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+               AlertDialog.Builder builder1 = builder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                    @Override
                    public void onClick(DialogInterface dialog, int which) {
                        if (ind < 5)
@@ -562,8 +621,14 @@ public class GameActivity extends AppCompatActivity {
                            }
                        }
                        ind = 0;
+                       findViewById(R.id.menu_phone).setEnabled(true);
+                       findViewById(R.id.menu_people).setEnabled(true);
+                       findViewById(R.id.menu_fifty).setEnabled(true);
                        assignation(ind);
+                       Intent intent = new Intent(GameActivity.this, MainActivity.class);
+                       startActivity(intent);
                    }
+
                });
 
                builder.setNegativeButton(android.R.string.no, null);
